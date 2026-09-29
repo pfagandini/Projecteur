@@ -32,6 +32,31 @@ Bluetooth: the two links may report different keys.
 `sudo python3 tools/norwii-capture.py --monitor` prints raw events live, which
 is handy for quick checks. The tool only needs Python 3, no extra modules.
 
-## Button map
+## Button map (N95s BLE, USB receiver)
 
-To be filled in from the capture.
+From `doc/captures/n95s-ble-usb.md`. The presenter detects tap and long
+press itself and then sends ready made shortcuts, most of them PowerPoint
+slide show shortcuts. A double press is not detected by the presenter: it
+arrives as two separate taps.
+
+The receiver shows up as three input devices: a mouse (buttons and motion),
+a keyboard (all shortcuts) and a third one reporting only `ABS_MISC`, which
+sent nothing during the capture.
+
+| Button | Tap | Long press |
+| --- | --- | --- |
+| Mouse (top) | Left click | Pointer motion while held, no button press |
+| Left | `Left` | `Meta+Enter`, `Alt+Meta+P`, `Shift+F5` in a row (start slide show; `Shift+F5` is PowerPoint "from current slide") |
+| Right | `Right` | `B` (black screen) |
+| Laser | Nothing reaches the computer: the physical laser turns on | `Ctrl+L` (PowerPoint laser pointer), pointer motion while held, `Ctrl+A` (PowerPoint arrow) on release |
+| Side up | `Ctrl+P` (PowerPoint pen), left button down, pointer motion, left button up, `Ctrl+A` | Same sequence; the pen starts after about 0.85 s of motion |
+| Side down | `E` (PowerPoint erase ink) | Nothing received |
+
+Consequences outside PowerPoint: in a browser (Quarto / reveal.js) `Ctrl+L`
+focuses the address bar, `Ctrl+P` opens the print dialog and `Ctrl+A`
+selects everything, so Projecteur has to swallow these shortcuts and turn
+them into its own actions.
+
+Still to confirm: the side down tap capture also contains 1.6 s of pointer
+motion before `E`, and its long press sent nothing. Bluetooth not captured
+yet.
