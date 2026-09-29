@@ -469,6 +469,13 @@ void Spotlight::onEventDataAvailable(int fd, SubEventConnection& connection)
           buf.data(), buf.pos() - 1, [this](norwii::Gesture g) {
             return norwiiAction(g) == norwii::Action::PassThrough;
           });
+        for (const auto& e : result.events) {
+          if (e.type == EV_KEY && e.value != 2) {
+            qCDebug(PROJECTEUR_INPUT_LOG).noquote()
+              << "Norwii forwarded key" << e.code << (e.value ? "press" : "release")
+              << "from" << connection.path();
+          }
+        }
         if (!result.events.empty()) {
           result.events.push_back(input_event{{}, EV_SYN, SYN_REPORT, 0});
           connection.inputMapper()->addEvents(result.events.data(), result.events.size());
