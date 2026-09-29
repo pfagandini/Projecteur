@@ -57,6 +57,58 @@ focuses the address bar, `Ctrl+P` opens the print dialog and `Ctrl+A`
 selects everything, so Projecteur has to swallow these shortcuts and turn
 them into its own actions.
 
+### Real laser and virtual laser
+
+Double press the laser button to switch it between two modes. The switch
+happens inside the presenter and sends nothing to the computer:
+
+- Presentation mode: a long press sends `Ctrl+L`, pointer motion and `Ctrl+A`.
+  Projecteur turns this into its virtual laser (dot or spotlight).
+- Physical laser mode: holding the button shines the real laser. Nothing
+  reaches the computer, so Projecteur stays out of the way.
+
+Projecteur cannot tell which of the two modes the presenter is in.
+
 Still to confirm: the side down tap capture also contains 1.6 s of pointer
 motion before `E`, and its long press sent nothing. Bluetooth not captured
 yet.
+
+## Gestures and actions
+
+Projecteur recognizes the shortcut bursts above as gestures. Each gesture is
+bound to an action. Arrow taps and the mouse button are not gestures: they
+pass through unchanged (and can still be remapped in Preferences, Devices).
+
+| Gesture | Default action |
+| --- | --- |
+| `laser-hold` | `laser-dot`: laser dot only, while held |
+| `side-up-hold` | `mouse`: drop `Ctrl+P` / `Ctrl+A`, keep the click and drag |
+| `side-down-tap` | `zoom-area`: toggle the zoom area |
+| `left-hold` | `laser-mode-dot`: make `laser-hold` show the laser dot |
+| `right-hold` | `laser-mode-spotlight`: make `laser-hold` show the spotlight |
+
+Available actions:
+
+| Action | Hold gesture | Tap gesture |
+| --- | --- | --- |
+| `ignore` | Nothing | Nothing |
+| `pass-through` | Send the original shortcuts to the application | Same |
+| `mouse` | Drop the shortcuts, keep pointer motion and clicks | Nothing |
+| `laser-dot` | Laser dot while held | Toggle the laser dot |
+| `zoom-area` | Zoom area while held | Toggle the zoom area |
+| `spotlight` | Spotlight (configured look) while held | Toggle the spotlight |
+| `laser-mode-dot` | | Set `laser-hold` to `laser-dot` |
+| `laser-mode-spotlight` | | Set `laser-hold` to `spotlight` |
+
+Until the settings page exists, change them in `~/.config/projecteurrc`,
+then restart Projecteur:
+
+```ini
+[Norwii]
+laser-hold=laser-dot
+side-down-tap=zoom-area
+```
+
+The overlay modes can also be triggered without the presenter, for example
+from a global shortcut: `projecteur -c spot=laser`, `projecteur -c spot=zoom`,
+`projecteur -c spot=off`.

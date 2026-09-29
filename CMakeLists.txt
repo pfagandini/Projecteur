@@ -65,6 +65,7 @@ add_executable(projecteur
   src/projecteurapp.cc         src/projecteurapp.h
   src/projecteurcontrol.cc     src/projecteurcontrol.h
   src/settings.cc              src/settings.h
+  src/norwiiinput.cc           src/norwiiinput.h
   src/spotlight.cc             src/spotlight.h
   src/spotshapes.cc            src/spotshapes.h
   src/virtualdevice.cc         src/virtualdevice.h
@@ -418,4 +419,12 @@ option(ENABLE_IWYU "Enable Include-What-You-Use" OFF)
 find_program(iwyu_path NAMES include-what-you-use iwyu)
 if(ENABLE_IWYU AND iwyu_path)
   set_property(TARGET projecteur PROPERTY CXX_INCLUDE_WHAT_YOU_USE ${iwyu_path})
+endif()
+
+option(BUILD_NORWII_TESTS "Build the Norwii gesture filter unit tests" OFF)
+if(BUILD_NORWII_TESTS)
+  enable_testing()
+  add_executable(norwiiinput_test tests/norwiiinput_test.cc src/norwiiinput.cc)
+  target_include_directories(norwiiinput_test PRIVATE src)
+  add_test(NAME norwiiinput_test COMMAND norwiiinput_test)
 endif()

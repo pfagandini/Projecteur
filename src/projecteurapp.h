@@ -27,6 +27,8 @@ class ProjecteurApplication : public QApplication
 {
   Q_OBJECT
   Q_PROPERTY(bool overlayVisible READ overlayVisible NOTIFY overlayVisibleChanged)
+  /// "spot", "laser" (dot only) or "zoom" (zoom area only)
+  Q_PROPERTY(QString overlayMode READ overlayMode NOTIFY overlayModeChanged)
   Q_PROPERTY(quint64 currentSpotScreen READ currentSpotScreen NOTIFY currentSpotScreenChanged)
   Q_PROPERTY(QPoint currentCursorPos READ currentCursorPos NOTIFY currentCursorPosChanged)
 
@@ -49,11 +51,13 @@ public:
   bool isPrimaryInstance() const { return m_primaryInstance; }
   int startupExitCode() const { return m_startupExitCode; }
   bool overlayVisible() const { return m_overlayVisible; }
+  QString overlayMode() const;
   void activate();
   void applyCommands(const QStringList& commands);
 
 signals:
   void overlayVisibleChanged(bool visible);
+  void overlayModeChanged();
   void currentSpotScreenChanged(quint64 screen);
   void currentCursorPosChanged(const QPoint& pos);
 

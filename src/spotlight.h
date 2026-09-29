@@ -10,6 +10,7 @@
 
 #include "asynchronous.h"
 #include "devicescan.h"
+#include "norwiiinput.h"
 
 class QTimer;
 class Settings;
@@ -35,8 +36,13 @@ public:
   explicit Spotlight(QObject* parent, Options options, Settings* settings);
   virtual ~Spotlight();
 
+  /// What the overlay shows while active.
+  enum class OverlayMode { Spot, Laser, Zoom };
+
   bool spotActive() const { return m_spotActive; }
-  void setSpotActive(bool active);
+  /// Activating also selects the overlay mode; deactivating ignores it.
+  void setSpotActive(bool active, OverlayMode mode = OverlayMode::Spot);
+  OverlayMode overlayMode() const { return m_overlayMode; }
 
   struct ConnectedDeviceInfo {
     DeviceId id;
@@ -56,6 +62,7 @@ signals:
   void deviceAccessError(const QString& name, const QString& path);
   void anySpotlightDeviceConnectedChanged(bool connected);
   void spotActiveChanged(bool isActive);
+  void overlayModeChanged(Spotlight::OverlayMode mode);
   void slideNavigationPressed();
 
 private:
@@ -69,6 +76,8 @@ private:
   int connectDevices();
   void removeDeviceConnection(const QString& devicePath);
   void onEventDataAvailable(int fd, SubEventConnection& connection);
+  void handleNorwiiGesture(const norwii::KeyFilter::GestureEvent& ge);
+  norwii::Action norwiiAction(norwii::Gesture gesture) const;
 
   const Options m_options;
   std::map<DeviceId, std::shared_ptr<DeviceConnection>> m_deviceConnections;
@@ -78,6 +87,8 @@ private:
   QTimer* m_connectionTimer = nullptr;
   QTimer* m_holdMoveEventTimer = nullptr;
   bool m_spotActive = false;
+  OverlayMode m_overlayMode = OverlayMode::Spot;
+  std::map<QString, norwii::KeyFilter> m_norwiiFilters; // by sub-device path
   std::shared_ptr<VirtualDevice> m_virtualMouseDevice;
   std::shared_ptr<VirtualDevice> m_virtualKeyDevice;
   Settings* m_settings = nullptr;

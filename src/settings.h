@@ -69,6 +69,10 @@ public:
   void setDotMode(const QString& mode);
   bool dotTrailEnabled() const { return m_dotTrailEnabled; }
   void setDotTrailEnabled(bool enabled);
+
+  /// Action bound to a Norwii presenter gesture (see norwiiinput.h for the keys).
+  QString norwiiAction(const QString& gesture, const QString& defaultAction) const;
+  void setNorwiiAction(const QString& gesture, const QString& action);
   QColor shadeColor() const { return m_shadeColor; }
   void setShadeColor(const QColor& color);
   double shadeOpacity() const { return m_shadeOpacity; }
@@ -204,6 +208,7 @@ signals:
   void dotOpacityChanged(double opacity);
   void dotModeChanged(const QString& mode);
   void dotTrailEnabledChanged(bool enabled);
+  void norwiiActionChanged(const QString& gesture, const QString& action);
   void shadeColorChanged(const QColor& color);
   void shadeOpacityChanged(double opcacity);
   void cursorChanged(Qt::CursorShape cursor);

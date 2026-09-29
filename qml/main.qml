@@ -12,6 +12,9 @@ Window {
     readonly property bool spotOnCurrentWindow: ProjecteurApp.currentSpotScreen === screenId
     property alias desktopPixmap: desktopImage.pixmap
     property var desktopStream: null
+    // "spot": configured spotlight, "laser": dot only, "zoom": zoom area only
+    readonly property string overlayMode: ProjecteurApp.overlayMode
+    readonly property bool showDot: overlayMode === "laser" || Settings.showCenterDot
 
     width: 300; height: 200
 
@@ -120,7 +123,9 @@ Window {
         }
 
         MultiEffect {
-            visible: Settings.zoomEnabled && mainWindow.spotOnCurrentWindow
+            visible: (mainWindow.overlayMode === "zoom"
+                      || (mainWindow.overlayMode === "spot" && Settings.zoomEnabled))
+                     && mainWindow.spotOnCurrentWindow
             anchors.fill: centerRect
             source: Settings.zoomMode === "text" ? textZoom : desktopTexture
             maskEnabled: true
@@ -180,7 +185,7 @@ Window {
 
         MultiEffect {
             id: spot
-            visible: Settings.showSpotShade
+            visible: Settings.showSpotShade && mainWindow.overlayMode === "spot"
             opacity: centerRect.opacity
             anchors.fill: centerRect
             source: centerRect
@@ -226,6 +231,7 @@ Window {
         MultiEffect {
             id: spotBorder
             visible: Settings.showBorder && Settings.borderSize > 0
+                     && mainWindow.overlayMode !== "laser"
             opacity: Settings.borderOpacity
             anchors.fill: centerRect
             source: borderShapeLoader
@@ -265,7 +271,7 @@ Window {
                 interval: 24
                 repeat: true
                 running: mainWindow.visible && ProjecteurApp.overlayVisible
-                         && Settings.showCenterDot && Settings.dotTrailEnabled
+                         && mainWindow.showDot && Settings.dotTrailEnabled
                 onRunningChanged: if (running) dotTrailHistory.reset()
                 onTriggered: {
                     const dx = dotTrailHistory.currentX - dotTrailHistory.point1X
@@ -310,7 +316,7 @@ Window {
             width: Math.max(1, maximumX - minimumX + margin * 2)
             height: Math.max(1, maximumY - minimumY + margin * 2)
             z: 1
-            visible: Settings.showCenterDot && Settings.dotTrailEnabled
+            visible: mainWindow.showDot && Settings.dotTrailEnabled
             opacity: Settings.dotOpacity
             property size outputSize: Qt.size(width, height)
             property real dotSize: Settings.dotSize
@@ -333,7 +339,7 @@ Window {
             radius: width * 0.5
             color: Settings.dotColor
             z: 2
-            visible: Settings.showCenterDot && Settings.dotMode === "solid"
+            visible: mainWindow.showDot && Settings.dotMode === "solid"
             opacity: Settings.dotOpacity
             enabled: false
         }
@@ -344,7 +350,7 @@ Window {
             width: Math.max(24, Settings.dotSize * 5)
             height: width
             z: 2
-            visible: Settings.showCenterDot && Settings.dotMode === "diffuse"
+            visible: mainWindow.showDot && Settings.dotMode === "diffuse"
             opacity: Settings.dotOpacity
             property size outputSize: Qt.size(width, height)
             property real dotSize: Settings.dotSize
