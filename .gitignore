@@ -6,3 +6,4 @@ CMakeLists.txt.user*
 /build/*
 /release-assets/
 icons/icon-font/output/
+__pycache__/
