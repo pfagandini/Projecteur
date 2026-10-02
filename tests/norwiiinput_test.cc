@@ -30,6 +30,10 @@ int main(){
     r.frame({K(KEY_LEFTSHIFT,1),K(KEY_F5,1)}); r.frame({K(KEY_LEFTSHIFT,0),K(KEY_F5,0)});
     CHECK(r.out.empty());
     CHECK((r.g == std::vector<KeyFilter::GestureEvent>{{Gesture::LeftHold,KeyFilter::Phase::Start}})); }
+  { Run r; // left hold, alternate form: a lone Esc is the same gesture and never reaches the slides
+    r.frame({S(458761),K(KEY_ESC,1)}); r.frame({S(458761),K(KEY_ESC,0)});
+    CHECK(r.out.empty());
+    CHECK((r.g == std::vector<KeyFilter::GestureEvent>{{Gesture::LeftHold,KeyFilter::Phase::Start}})); }
   { Run r; // arrows pass through untouched, with scan codes
     r.frame({S(458832),K(KEY_LEFT,1)}); r.frame({S(458832),K(KEY_LEFT,0)});
     CHECK(r.out.size()==4 && r.out[0].type==EV_MSC && r.out[1].code==KEY_LEFT); CHECK(r.g.empty()); }

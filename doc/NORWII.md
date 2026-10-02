@@ -46,7 +46,7 @@ sent nothing during the capture.
 | Button | Tap | Long press |
 | --- | --- | --- |
 | Mouse (top) | Left click | Pointer motion while held, no button press |
-| Left | `Left` | `Meta+Enter`, `Alt+Meta+P`, `Shift+F5` in a row (start slide show; `Shift+F5` is PowerPoint "from current slide") |
+| Left | `Left` | `Meta+Enter`, `Alt+Meta+P`, `Shift+F5` in a row (start slide show; `Shift+F5` is PowerPoint "from current slide"). Every other hold sends a lone `Esc` instead (end slide show), as seen in the field on 2026-10-02 |
 | Right | `Right` | `B` (black screen) |
 | Laser | Nothing reaches the computer: the physical laser turns on | `Ctrl+L` (PowerPoint laser pointer), pointer motion while held, `Ctrl+A` (PowerPoint arrow) on release |
 | Side up | `Ctrl+P` (PowerPoint pen), left button down, pointer motion, left button up, `Ctrl+A` | Same sequence; the pen starts after about 0.85 s of motion |

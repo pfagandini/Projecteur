@@ -39,6 +39,8 @@ namespace {
     if (mods == 0) {
       if (code == KEY_E) { return Match{Match::Start, Gesture::SideDownTap}; }
       if (code == KEY_B) { return Match{Match::Start, Gesture::RightHold}; }
+      // Every other left hold sends a lone Esc ("end slide show") instead of the macro below.
+      if (code == KEY_ESC) { return Match{Match::Start, Gesture::LeftHold}; }
     }
     if (mods == Meta && code == KEY_ENTER) { return Match{Match::Start, Gesture::LeftHold}; }
     if (mods == (Alt | Meta) && code == KEY_P) { return Match{Match::Tail, Gesture::LeftHold}; }
