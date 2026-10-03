@@ -469,6 +469,10 @@ void Spotlight::onEventDataAvailable(int fd, SubEventConnection& connection)
           buf.data(), buf.pos() - 1, [this](norwii::Gesture g) {
             return norwiiAction(g) == norwii::Action::PassThrough;
           });
+        for (const auto code : result.dropped) {
+          qCDebug(PROJECTEUR_INPUT_LOG).noquote()
+            << "Norwii dropped unknown key" << code << "from" << connection.path();
+        }
         for (const auto& e : result.events) {
           if (e.type == EV_KEY && e.value != 2) {
             qCDebug(PROJECTEUR_INPUT_LOG).noquote()

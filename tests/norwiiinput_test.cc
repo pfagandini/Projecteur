@@ -10,9 +10,9 @@ static input_event S(int v){ input_event e{}; e.type=EV_MSC; e.code=MSC_SCAN; e.
 static std::string dump(const std::vector<input_event>& ev){ std::string s; for(auto&e:ev){ if(e.type==EV_KEY) s+=std::to_string(e.code)+(e.value?"+ ":"- "); } return s; }
 static int fails=0;
 #define CHECK(c) do{ if(!(c)){ printf("FAIL line %d: %s\n", __LINE__, #c); ++fails;} }while(0)
-struct Run { KeyFilter f; std::vector<input_event> out; std::vector<KeyFilter::GestureEvent> g;
+struct Run { KeyFilter f; std::vector<input_event> out; std::vector<KeyFilter::GestureEvent> g; std::vector<uint16_t> dropped;
   KeyFilter::PassThroughFn pt = [](Gesture){ return false; };
-  void frame(std::vector<input_event> v){ auto r=f.filter(v.data(), v.size(), pt); out.insert(out.end(), r.events.begin(), r.events.end()); g.insert(g.end(), r.gestures.begin(), r.gestures.end()); } };
+  void frame(std::vector<input_event> v){ auto r=f.filter(v.data(), v.size(), pt); out.insert(out.end(), r.events.begin(), r.events.end()); g.insert(g.end(), r.gestures.begin(), r.gestures.end()); dropped.insert(dropped.end(), r.dropped.begin(), r.dropped.end()); } };
 int main(){
   { Run r; // laser hold: Ctrl+L, later Ctrl+A (same-frame press / release, as captured)
     r.frame({S(458976),K(KEY_LEFTCTRL,1),S(458767),K(KEY_L,1)});
@@ -45,13 +45,22 @@ int main(){
     r.frame({K(KEY_LEFTCTRL,1),K(KEY_A,1)}); r.frame({K(KEY_LEFTCTRL,0),K(KEY_A,0)});
     CHECK(dump(r.out)=="29+ 25+ 29- 25- 29+ 30+ 29- 30- "); printf("passthrough: %s\n", dump(r.out).c_str());
     CHECK(r.g.size()==2); }
-  { Run r; // unknown combo Ctrl+C passes through with modifier
+  { Run r; // unknown combo Ctrl+C is dropped completely, and reported
     r.frame({K(KEY_LEFTCTRL,1),K(KEY_C,1)}); r.frame({K(KEY_C,0),K(KEY_LEFTCTRL,0)});
-    CHECK(dump(r.out)=="29+ 46+ 46- 29- "); }
+    CHECK(r.out.empty()); CHECK(r.dropped.size()==1 && r.dropped[0]==KEY_C); CHECK(r.g.empty()); }
+  { Run r; // unknown lone key (e.g. an alternate right hold burst) is dropped
+    r.frame({S(458767),K(KEY_W,1)}); r.frame({S(458767),K(KEY_W,0)});
+    CHECK(r.out.empty()); CHECK(r.dropped.size()==1); }
+  { Run r; // allowed keys keep their modifiers
+    r.frame({K(KEY_LEFTSHIFT,1),K(KEY_RIGHT,1)}); r.frame({K(KEY_RIGHT,0),K(KEY_LEFTSHIFT,0)});
+    CHECK(dump(r.out)=="42+ 106+ 106- 42- "); }
+  { Run r; // mouse buttons pass, with scan codes
+    r.frame({S(589825),K(BTN_LEFT,1)}); r.frame({S(589825),K(BTN_LEFT,0)});
+    CHECK(r.out.size()==4 && r.out[1].code==BTN_LEFT); CHECK(r.dropped.empty()); }
   { Run r; // stray Ctrl+A without active hold is swallowed, no gesture
     r.frame({K(KEY_LEFTCTRL,1),K(KEY_A,1)}); r.frame({K(KEY_LEFTCTRL,0),K(KEY_A,0)});
     CHECK(r.out.empty()); CHECK(r.g.empty()); }
-  { Run r; // lone modifier tap forwarded
-    r.frame({K(KEY_LEFTSHIFT,1)}); r.frame({K(KEY_LEFTSHIFT,0)}); CHECK(dump(r.out)=="42+ 42- "); }
+  { Run r; // lone modifier tap is dropped (a lone Meta would open the launcher)
+    r.frame({K(KEY_LEFTMETA,1)}); r.frame({K(KEY_LEFTMETA,0)}); CHECK(r.out.empty()); CHECK(r.dropped.size()==1); }
   for (int i=0;i<GestureCount;++i){ auto g=Gesture(i); auto k=actionKey(defaultAction(g)); CHECK(actionFromKey(k)==defaultAction(g)); CHECK(!gestureKey(g).empty()); }
   printf(fails? "%d failures\n" : "all passed\n", fails); return fails; }

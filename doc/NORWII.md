@@ -79,6 +79,13 @@ Projecteur recognizes the shortcut bursts above as gestures. Each gesture is
 bound to an action. Arrow taps and the mouse button are not gestures: they
 pass through unchanged (and can still be remapped in Preferences, Devices).
 
+Any other key from the presenter is dropped, because the presenter sometimes
+sends a different burst for the same button (the lone `Esc` on left hold).
+Only arrows, Page Up / Page Down, volume keys and mouse buttons pass. Dropped
+keys are logged; to see them, start Projecteur with
+`QT_LOGGING_RULES="projecteur.input=true" projecteur 2>&1 | grep -i norwii`
+and look for `Norwii dropped unknown key`.
+
 | Gesture | Default action |
 | --- | --- |
 | `laser-hold` | `laser-dot`: laser dot only, while held |

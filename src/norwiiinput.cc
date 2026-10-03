@@ -23,6 +23,20 @@ namespace {
     }
   }
 
+  // Keys that pass through unchanged when they are not part of a gesture.
+  bool isAllowedKey(uint16_t code)
+  {
+    if (code >= BTN_MISC && code < KEY_OK) { return true; } // mouse buttons
+    switch (code) {
+      case KEY_LEFT: case KEY_RIGHT: case KEY_UP: case KEY_DOWN:
+      case KEY_PAGEUP: case KEY_PAGEDOWN:
+      case KEY_VOLUMEUP: case KEY_VOLUMEDOWN: case KEY_MUTE:
+        return true;
+      default:
+        return false;
+    }
+  }
+
   // A shortcut the presenter sends, and the gesture it belongs to.
   struct Match {
     enum Kind { Start, End, Tail } kind;
@@ -170,9 +184,10 @@ KeyFilter::Result KeyFilter::filter(const input_event* events, size_t num,
         m_modifiers &= ~bit;
         if (m_swallowedKeys.erase(ev.code)) { continue; }
         if (pending != m_pendingModifiers.end()) {
-          // Modifier pressed and released on its own.
-          forward(r, pending->scan, pending->key);
+          // Modifier pressed and released on its own: drop it, a lone Meta opens the launcher.
+          r.dropped.push_back(ev.code);
           m_pendingModifiers.erase(pending);
+          continue;
         }
         forward(r, scan, ev);
       }
@@ -214,6 +229,10 @@ KeyFilter::Result KeyFilter::filter(const input_event* events, size_t num,
           }
         }
       }
+    }
+    else if (!isAllowedKey(ev.code)) {
+      swallow = true;
+      r.dropped.push_back(ev.code);
     }
 
     if (swallow) {

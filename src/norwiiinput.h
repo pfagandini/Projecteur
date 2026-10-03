@@ -48,7 +48,10 @@ std::string_view actionKey(Action a);
 std::optional<Action> actionFromKey(std::string_view key);
 Action defaultAction(Gesture g);
 
-/// Filters the events of a Norwii keyboard sub-device, one SYN frame at a time.
+/// Filters the events of a Norwii sub-device, one SYN frame at a time.
+/// Only recognized gestures, slide navigation, volume keys and mouse buttons get
+/// through: the presenter sends a different burst every now and then (e.g. a lone
+/// Esc on every other left hold), and an unknown key must never reach the slides.
 class KeyFilter
 {
 public:
@@ -61,6 +64,7 @@ public:
   struct Result {
     std::vector<input_event> events;  ///< Events to forward, without closing SYN
     std::vector<GestureEvent> gestures;
+    std::vector<uint16_t> dropped;    ///< Unknown keys that were dropped (for diagnosis)
   };
   /// Returns true if the shortcuts of a gesture must reach the application unchanged.
   using PassThroughFn = std::function<bool(Gesture)>;
