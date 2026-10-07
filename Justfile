@@ -104,6 +104,15 @@ install: _stop-projecteur build package
         string:org.projecteur.Projecteur \
         uint32:0 >/dev/null
 
+# Install the current build into /usr with cmake (for non-Arch systems such as Fedora).
+install-local: _stop-projecteur
+    cmake -S "{{ project_root }}" -B "{{ build_dir }}" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DPACKAGE_TARGETS=OFF
+    cmake --build "{{ build_dir }}" --parallel
+    sudo cmake --install "{{ build_dir }}"
+
 _stop-projecteur:
     #!/usr/bin/env bash
     set -euo pipefail

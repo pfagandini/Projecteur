@@ -20,6 +20,12 @@ close at hand in Plasma.
 > cross-desktop codebase is maintained for critical fixes on the
 > [`legacy/qt5`](https://github.com/gbin/Projecteur/tree/legacy/qt5) branch.
 
+> [!NOTE]
+> This fork supports the Logitech Spotlight and Norwii presenters only. Norwii
+> shortcut bursts are turned into configurable gestures, see
+> [doc/NORWII.md](./doc/NORWII.md). Only the N95s over the USB receiver has been
+> tested on real hardware.
+
 ## Why Projecteur?
 
 - **Visible everywhere.** Unlike a physical laser, the spotlight appears in
@@ -117,14 +123,9 @@ presenters vibrate when time expires.
 | --- | --- | --- |
 | Logitech Spotlight | USB receiver / Bluetooth | `046d:c53e` / `046d:b503` |
 | Logitech Spotlight 2 | Logi Bolt USB-C receiver / Bluetooth | `046d:c548` / `046d:b506` |
-| Lenovo ThinkPad X1 Presenter Mouse | USB / Bluetooth | `17ef:60d9` / `17ef:60db` |
-| AVATTO H100 / August WP200 | USB | `0c45:8101` |
-| August LP315 | USB | `2312:863d` |
-| AVATTO i10 Pro | USB | `2571:4109` |
-| August LP310 | USB | `69a7:9803` |
 | Norwii Wireless Presenter | USB | `3243:0122` |
 | Norwii N95s BLE Presenter | USB receiver / Bluetooth | `3243:0382` / `3243:03a2` |
-| Kensington PowerPointer | USB | `1ea7:0002` |
+| Norwii N97s BLE Presenter | USB receiver / Bluetooth | `3243:0342` / `3243:0352` |
 
 Projecteur can also accept an additional device at runtime with
 `--additional-device VENDOR:PRODUCT`. See `projecteur --help` for details.
