@@ -264,6 +264,23 @@ void Settings::save()
 }
 
 // -------------------------------------------------------------------------------------------------
+QString Settings::norwiiAction(const QString& gesture, const QString& defaultAction) const
+{
+  return m_config->config()->group(QStringLiteral("Norwii")).readEntry(gesture, defaultAction);
+}
+
+// -------------------------------------------------------------------------------------------------
+void Settings::setNorwiiAction(const QString& gesture, const QString& action)
+{
+  auto group = m_config->config()->group(QStringLiteral("Norwii"));
+  if (group.readEntry(gesture, QString()) == action) { return; }
+  group.writeEntry(gesture, action);
+  sync();
+  qCDebug(PROJECTEUR_SETTINGS_LOG).noquote() << "norwii." << gesture << " = " << action;
+  emit norwiiActionChanged(gesture, action);
+}
+
+// -------------------------------------------------------------------------------------------------
 void Settings::sync()
 {
   if (!m_config->config()->sync()) {

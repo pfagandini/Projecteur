@@ -65,6 +65,7 @@ add_executable(projecteur
   src/projecteurapp.cc         src/projecteurapp.h
   src/projecteurcontrol.cc     src/projecteurcontrol.h
   src/settings.cc              src/settings.h
+  src/norwiiinput.cc           src/norwiiinput.h
   src/spotlight.cc             src/spotlight.h
   src/spotshapes.cc            src/spotshapes.h
   src/virtualdevice.cc         src/virtualdevice.h
@@ -282,6 +283,7 @@ foreach(line ${CONFLINES})
     # message(STATUS "vendorId: ${CMAKE_MATCH_1}, productId: ${CMAKE_MATCH_2}, ${CMAKE_MATCH_3}, '${CMAKE_MATCH_4}'")
     set(vendorId "${CMAKE_MATCH_1}")
     set(productId "${CMAKE_MATCH_2}")
+    set(deviceName "${CMAKE_MATCH_4}")
 
     if("${CMAKE_MATCH_3}" STREQUAL "usb")
       string(APPEND EXTRA_USB_UDEV_RULES "\n## Extra-Device: ${CMAKE_MATCH_4}")
@@ -296,7 +298,7 @@ foreach(line ${CONFLINES})
       if("${productId}" MATCHES "0*([0-9a-fA-F]+)")
         set(productId "${CMAKE_MATCH_1}")
       endif()
-      string(APPEND EXTRA_BLUETOOTH_UDEV_RULES "\n## Extra-Device: ${CMAKE_MATCH_4}")
+      string(APPEND EXTRA_BLUETOOTH_UDEV_RULES "\n## Extra-Device: ${deviceName}")
       string(APPEND EXTRA_BLUETOOTH_UDEV_RULES "\nSUBSYSTEMS==\"input\", ")
       string(APPEND EXTRA_BLUETOOTH_UDEV_RULES "ENV{LIBINPUT_DEVICE_GROUP}=\"5/${vendorId}/${productId}*\", ")
       string(APPEND EXTRA_BLUETOOTH_UDEV_RULES "MODE=\"0660\", TAG+=\"uaccess\"")
@@ -417,4 +419,12 @@ option(ENABLE_IWYU "Enable Include-What-You-Use" OFF)
 find_program(iwyu_path NAMES include-what-you-use iwyu)
 if(ENABLE_IWYU AND iwyu_path)
   set_property(TARGET projecteur PROPERTY CXX_INCLUDE_WHAT_YOU_USE ${iwyu_path})
+endif()
+
+option(BUILD_NORWII_TESTS "Build the Norwii gesture filter unit tests" OFF)
+if(BUILD_NORWII_TESTS)
+  enable_testing()
+  add_executable(norwiiinput_test tests/norwiiinput_test.cc src/norwiiinput.cc)
+  target_include_directories(norwiiinput_test PRIVATE src)
+  add_test(NAME norwiiinput_test COMMAND norwiiinput_test)
 endif()

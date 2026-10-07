@@ -148,8 +148,14 @@ uint32_t Spotlight::connectedDeviceCount() const
 }
 
 // -------------------------------------------------------------------------------------------------
-void Spotlight::setSpotActive(bool active)
+void Spotlight::setSpotActive(bool active, OverlayMode mode)
 {
+  if (active && m_overlayMode != mode) {
+    m_overlayMode = mode;
+    emit overlayModeChanged(mode);
+    // Already visible: let the overlay set itself up again for the new mode.
+    if (m_spotActive) { emit spotActiveChanged(true); }
+  }
   if (m_spotActive == active) { return; }
   m_spotActive = active;
   if (!m_spotActive) { m_activeTimer->stop(); }
@@ -363,6 +369,7 @@ void Spotlight::removeDeviceConnection(const QString &devicePath)
     }
 
     auto& dc = dc_it->second;
+    m_norwiiFilters.erase(devicePath);
     if (dc->removeSubDevice(devicePath)) {
       emit subDeviceDisconnected(dc_it->first, dc->deviceName(), devicePath);
     }
@@ -424,7 +431,15 @@ void Spotlight::onEventDataAvailable(int fd, SubEventConnection& connection)
       const bool isMouseMoveEvent = first_ev.type == EV_REL
                                     && (first_ev.code == REL_X || first_ev.code == REL_Y);
 
-      if (isMouseMoveEvent)
+      const bool isNorwii = connection.deviceId().vendorId == norwii::VendorId;
+
+      if (isMouseMoveEvent && isNorwii)
+      { // Norwii: the pointer is a plain air mouse, the overlay is driven by gestures only.
+        if (m_virtualMouseDevice) {
+          m_virtualMouseDevice->emitEvents(buf.data(), buf.pos());
+        }
+      }
+      else if (isMouseMoveEvent)
       { // Skip input mapping for mouse move events completely
         // Note: During a Next or Back button press the Logitech Spotlight device can send
         // move events via hid++ notifications. It seems that just when releasing the
@@ -448,6 +463,29 @@ void Spotlight::onEventDataAvailable(int fd, SubEventConnection& connection)
           m_virtualMouseDevice->emitEvents(buf.data(), buf.pos());
         }
       }
+      else if (isNorwii && !connection.inputMapper()->recordingMode())
+      { // Turn the presenter's shortcut bursts into gestures, forward everything else.
+        auto result = m_norwiiFilters[connection.path()].filter(
+          buf.data(), buf.pos() - 1, [this](norwii::Gesture g) {
+            return norwiiAction(g) == norwii::Action::PassThrough;
+          });
+        for (const auto code : result.dropped) {
+          qCDebug(PROJECTEUR_INPUT_LOG).noquote()
+            << "Norwii dropped unknown key" << code << "from" << connection.path();
+        }
+        for (const auto& e : result.events) {
+          if (e.type == EV_KEY && e.value != 2) {
+            qCDebug(PROJECTEUR_INPUT_LOG).noquote()
+              << "Norwii forwarded key" << e.code << (e.value ? "press" : "release")
+              << "from" << connection.path();
+          }
+        }
+        if (!result.events.empty()) {
+          result.events.push_back(input_event{{}, EV_SYN, SYN_REPORT, 0});
+          connection.inputMapper()->addEvents(result.events.data(), result.events.size());
+        }
+        for (const auto& ge : result.gestures) { handleNorwiiGesture(ge); }
+      }
       else
       { // Forward events to input mapper for the device
         connection.inputMapper()->addEvents(buf.data(), buf.pos());
@@ -464,6 +502,60 @@ void Spotlight::onEventDataAvailable(int fd, SubEventConnection& connection)
 
     if (!isNonBlocking) { break; }
   } // end while loop
+}
+
+// -------------------------------------------------------------------------------------------------
+norwii::Action Spotlight::norwiiAction(norwii::Gesture gesture) const
+{
+  const auto fallback = norwii::defaultAction(gesture);
+  if (!m_settings) { return fallback; }
+  const auto key = norwii::gestureKey(gesture);
+  const auto value = m_settings->norwiiAction(
+    QString::fromLatin1(key.data(), key.size()),
+    QString::fromLatin1(norwii::actionKey(fallback).data(), norwii::actionKey(fallback).size()));
+  return norwii::actionFromKey(value.toStdString()).value_or(fallback);
+}
+
+// -------------------------------------------------------------------------------------------------
+void Spotlight::handleNorwiiGesture(const norwii::KeyFilter::GestureEvent& ge)
+{
+  using norwii::Action;
+  const auto action = norwiiAction(ge.gesture);
+  const auto isStart = ge.phase == norwii::KeyFilter::Phase::Start;
+
+  qCDebug(PROJECTEUR_INPUT_LOG).noquote()
+    << "Norwii gesture" << norwii::gestureKey(ge.gesture).data()
+    << (isStart ? "start" : "end") << "->" << norwii::actionKey(action).data();
+
+  if (action == Action::LaserModeDot || action == Action::LaserModeSpotlight)
+  {
+    if (!isStart || !m_settings) { return; }
+    const auto laserKey = norwii::gestureKey(norwii::Gesture::LaserHold);
+    const auto modeKey = norwii::actionKey(
+      action == Action::LaserModeDot ? Action::LaserDot : Action::Spotlight);
+    m_settings->setNorwiiAction(QString::fromLatin1(laserKey.data(), laserKey.size()),
+                                QString::fromLatin1(modeKey.data(), modeKey.size()));
+    return;
+  }
+
+  OverlayMode mode;
+  switch (action) {
+    case Action::LaserDot: mode = OverlayMode::Laser; break;
+    case Action::ZoomArea: mode = OverlayMode::Zoom; break;
+    case Action::Spotlight: mode = OverlayMode::Spot; break;
+    default: return; // Ignore, PassThrough and Mouse have nothing to show
+  }
+
+  if (norwii::isHoldGesture(ge.gesture)) {
+    // Shown while held.
+    if (isStart) { setSpotActive(true, mode); }
+    else if (m_overlayMode == mode) { setSpotActive(false); }
+  }
+  else {
+    // Taps toggle.
+    const bool showing = spotActive() && m_overlayMode == mode;
+    setSpotActive(!showing, mode);
+  }
 }
 
 // -------------------------------------------------------------------------------------------------

@@ -345,7 +345,7 @@ namespace {
       }
       print() << "  -c COMMAND|PROPERTY    " << commandOption_.description() << std::endl;
       print() << "<Commands>";
-      print() << "  spot=[on|off|toggle]     " << i18n("Turn spotlight on/off or toggle.");
+      print() << "  spot=[on|off|toggle|laser|zoom] " << i18n("Turn spotlight on/off or toggle, or show only the laser dot or the zoom area.");
       if (fullHelp) {
         print() << "  preset=NAME              " << i18n("Set a preset.");
         print() << "  vibrate[=I[,L]]          " << i18n("Send vibrate command to device with intensity,length.");

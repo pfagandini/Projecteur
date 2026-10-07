@@ -200,6 +200,8 @@ ProjecteurApplication::~ProjecteurApplication()
 // -------------------------------------------------------------------------------------------------
 void ProjecteurApplication::setupSpotlight()
 {
+  connect(m_spotlight, &Spotlight::overlayModeChanged, this, &ProjecteurApplication::overlayModeChanged);
+
   // Handling of spotlight window when mouse move events from spotlight device are detected
   connect(m_spotlight, &Spotlight::spotActiveChanged, this,
   [this](bool active)
@@ -220,7 +222,9 @@ void ProjecteurApplication::setupSpotlight()
       {
         if (window->screen())
         {
-          if (m_settings->zoomEnabled()) {
+          const auto mode = m_spotlight->overlayMode();
+          if (mode == Spotlight::OverlayMode::Zoom
+              || (mode == Spotlight::OverlayMode::Spot && m_settings->zoomEnabled())) {
             auto* stream = window->property("desktopStream").value<QObject*>();
             const auto streamScreenId =
               window->property("desktopStreamScreenId").toULongLong();
@@ -462,6 +466,17 @@ QWindow* ProjecteurApplication::createOverlayWindow()
   layerWindow->setActivateOnShow(false);
   layerWindow->setCloseOnDismissed(false);
   return window;
+}
+
+// -------------------------------------------------------------------------------------------------
+QString ProjecteurApplication::overlayMode() const
+{
+  switch (m_spotlight->overlayMode()) {
+    case Spotlight::OverlayMode::Laser: return QStringLiteral("laser");
+    case Spotlight::OverlayMode::Zoom: return QStringLiteral("zoom");
+    case Spotlight::OverlayMode::Spot: break;
+  }
+  return QStringLiteral("spot");
 }
 
 // -------------------------------------------------------------------------------------------------
@@ -716,6 +731,10 @@ void ProjecteurApplication::applyCommand(const QString& command)
       qCDebug(PROJECTEUR_COMMAND_LOG).noquote() << QStringLiteral("Received empty command value for command spot");
     } else if (cmdValue.toLower() == "toggle") {
       m_spotlight->setSpotActive(!m_spotlight->spotActive());
+    } else if (cmdValue.toLower() == "laser") {
+      m_spotlight->setSpotActive(true, Spotlight::OverlayMode::Laser);
+    } else if (cmdValue.toLower() == "zoom") {
+      m_spotlight->setSpotActive(true, Spotlight::OverlayMode::Zoom);
     }
     else {
       const bool active = (cmdValue.toLower() == "on"

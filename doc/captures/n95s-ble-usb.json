@@ -1,0 +1,1537 @@
+{
+  "created": "2026-09-29T14:14:23",
+  "kernel": "7.2.7-200.fc44.x86_64",
+  "devices": [
+    {
+      "event": "/dev/input/event18",
+      "name": "Norwii BLE Presenter Dongle",
+      "vendor": "3243",
+      "product": "0382",
+      "bus": "usb",
+      "phys": "usb-0000:00:14.0-7/input0",
+      "capabilities": {
+        "key": [
+          "BTN_LEFT",
+          "BTN_RIGHT",
+          "BTN_MIDDLE",
+          "BTN_SIDE",
+          "BTN_EXTRA"
+        ],
+        "rel": [
+          "REL_X",
+          "REL_Y",
+          "REL_WHEEL",
+          "REL_WHEEL_HI_RES"
+        ],
+        "msc": [
+          "MSC_SCAN"
+        ]
+      }
+    },
+    {
+      "event": "/dev/input/event19",
+      "name": "Norwii BLE Presenter Dongle Keyboard",
+      "vendor": "3243",
+      "product": "0382",
+      "bus": "usb",
+      "phys": "usb-0000:00:14.0-7/input1",
+      "capabilities": {
+        "key": [
+          "KEY_ESC",
+          "KEY_1",
+          "KEY_2",
+          "KEY_3",
+          "KEY_4",
+          "KEY_5",
+          "KEY_6",
+          "KEY_7",
+          "KEY_8",
+          "KEY_9",
+          "KEY_0",
+          "KEY_MINUS",
+          "KEY_EQUAL",
+          "KEY_BACKSPACE",
+          "KEY_TAB",
+          "KEY_Q",
+          "KEY_W",
+          "KEY_E",
+          "KEY_R",
+          "KEY_T",
+          "KEY_Y",
+          "KEY_U",
+          "KEY_I",
+          "KEY_O",
+          "KEY_P",
+          "KEY_LEFTBRACE",
+          "KEY_RIGHTBRACE",
+          "KEY_ENTER",
+          "KEY_LEFTCTRL",
+          "KEY_A",
+          "KEY_S",
+          "KEY_D",
+          "KEY_F",
+          "KEY_G",
+          "KEY_H",
+          "KEY_J",
+          "KEY_K",
+          "KEY_L",
+          "KEY_SEMICOLON",
+          "KEY_APOSTROPHE",
+          "KEY_GRAVE",
+          "KEY_LEFTSHIFT",
+          "KEY_BACKSLASH",
+          "KEY_Z",
+          "KEY_X",
+          "KEY_C",
+          "KEY_V",
+          "KEY_B",
+          "KEY_N",
+          "KEY_M",
+          "KEY_COMMA",
+          "KEY_DOT",
+          "KEY_SLASH",
+          "KEY_RIGHTSHIFT",
+          "KEY_KPASTERISK",
+          "KEY_LEFTALT",
+          "KEY_SPACE",
+          "KEY_CAPSLOCK",
+          "KEY_F1",
+          "KEY_F2",
+          "KEY_F3",
+          "KEY_F4",
+          "KEY_F5",
+          "KEY_F6",
+          "KEY_F7",
+          "KEY_F8",
+          "KEY_F9",
+          "KEY_F10",
+          "KEY_NUMLOCK",
+          "KEY_SCROLLLOCK",
+          "KEY_KP7",
+          "KEY_KP8",
+          "KEY_KP9",
+          "KEY_KPMINUS",
+          "KEY_KP4",
+          "KEY_KP5",
+          "KEY_KP6",
+          "KEY_KPPLUS",
+          "KEY_KP1",
+          "KEY_KP2",
+          "KEY_KP3",
+          "KEY_KP0",
+          "KEY_KPDOT",
+          "KEY_ZENKAKUHANKAKU",
+          "KEY_102ND",
+          "KEY_F11",
+          "KEY_F12",
+          "KEY_RO",
+          "KEY_KATAKANA",
+          "KEY_HIRAGANA",
+          "KEY_HENKAN",
+          "KEY_KATAKANAHIRAGANA",
+          "KEY_MUHENKAN",
+          "KEY_KPJPCOMMA",
+          "KEY_KPENTER",
+          "KEY_RIGHTCTRL",
+          "KEY_KPSLASH",
+          "KEY_SYSRQ",
+          "KEY_RIGHTALT",
+          "KEY_HOME",
+          "KEY_UP",
+          "KEY_PAGEUP",
+          "KEY_LEFT",
+          "KEY_RIGHT",
+          "KEY_END",
+          "KEY_DOWN",
+          "KEY_PAGEDOWN",
+          "KEY_INSERT",
+          "KEY_DELETE",
+          "KEY_MUTE",
+          "KEY_VOLUMEDOWN",
+          "KEY_VOLUMEUP",
+          "KEY_POWER",
+          "KEY_KPEQUAL",
+          "KEY_PAUSE",
+          "KEY_KPCOMMA",
+          "KEY_HANGEUL",
+          "KEY_HANJA",
+          "KEY_YEN",
+          "KEY_LEFTMETA",
+          "KEY_RIGHTMETA",
+          "KEY_COMPOSE",
+          "KEY_STOP",
+          "KEY_AGAIN",
+          "KEY_PROPS",
+          "KEY_UNDO",
+          "KEY_FRONT",
+          "KEY_COPY",
+          "KEY_OPEN",
+          "KEY_PASTE",
+          "KEY_FIND",
+          "KEY_CUT",
+          "KEY_HELP",
+          "KEY_CALC",
+          "KEY_FILE",
+          "KEY_WWW",
+          "KEY_BOOKMARKS",
+          "KEY_BACK",
+          "KEY_FORWARD",
+          "KEY_EJECTCD",
+          "KEY_NEXTSONG",
+          "KEY_PLAYPAUSE",
+          "KEY_PREVIOUSSONG",
+          "KEY_STOPCD",
+          "KEY_RECORD",
+          "KEY_REWIND",
+          "KEY_REFRESH",
+          "KEY_KPLEFTPAREN",
+          "KEY_KPRIGHTPAREN",
+          "KEY_F13",
+          "KEY_F14",
+          "KEY_F15",
+          "KEY_F16",
+          "KEY_F17",
+          "KEY_F18",
+          "KEY_F19",
+          "KEY_F20",
+          "KEY_F21",
+          "KEY_F22",
+          "KEY_F23",
+          "KEY_F24",
+          "KEY_PLAY",
+          "KEY_FASTFORWARD",
+          "KEY_UNKNOWN",
+          "KEY_PROGRAM",
+          "KEY_CHANNELUP",
+          "KEY_CHANNELDOWN"
+        ],
+        "msc": [
+          "MSC_SCAN"
+        ]
+      }
+    },
+    {
+      "event": "/dev/input/event20",
+      "name": "Norwii BLE Presenter Dongle",
+      "vendor": "3243",
+      "product": "0382",
+      "bus": "usb",
+      "phys": "usb-0000:00:14.0-7/input2",
+      "capabilities": {
+        "abs": [
+          "ABS_MISC"
+        ]
+      }
+    }
+  ],
+  "buttons": [
+    {
+      "button": "mouse",
+      "gestures": {
+        "tap": [
+          {
+            "ms": 0,
+            "dev": "/dev/input/event18",
+            "event": "MSC_SCAN 589825"
+          },
+          {
+            "ms": 0,
+            "dev": "/dev/input/event18",
+            "event": "BTN_LEFT press"
+          },
+          {
+            "ms": 49,
+            "dev": "/dev/input/event18",
+            "event": "MSC_SCAN 589825"
+          },
+          {
+            "ms": 49,
+            "dev": "/dev/input/event18",
+            "event": "BTN_LEFT release"
+          }
+        ],
+        "long": [
+          {
+            "ms": 0,
+            "dev": "/dev/input/event18",
+            "event": "REL_X motion: 46 events, total -97"
+          },
+          {
+            "ms": 0,
+            "dev": "/dev/input/event18",
+            "event": "REL_Y motion: 57 events, total -72"
+          }
+        ],
+        "double": [
+          {
+            "ms": 0,
+            "dev": "/dev/input/event18",
+            "event": "MSC_SCAN 589825"
+          },
+          {
+            "ms": 0,
+            "dev": "/dev/input/event18",
+            "event": "BTN_LEFT press"
+          },
+          {
+            "ms": 20,
+            "dev": "/dev/input/event18",
+            "event": "MSC_SCAN 589825"
+          },
+          {
+            "ms": 20,
+            "dev": "/dev/input/event18",
+            "event": "BTN_LEFT release"
+          },
+          {
+            "ms": 50,
+            "dev": "/dev/input/event18",
+            "event": "MSC_SCAN 589825"
+          },
+          {
+            "ms": 50,
+            "dev": "/dev/input/event18",
+            "event": "BTN_LEFT press"
+          },
+          {
+            "ms": 80,
+            "dev": "/dev/input/event18",
+            "event": "MSC_SCAN 589825"
+          },
+          {
+            "ms": 80,
+            "dev": "/dev/input/event18",
+            "event": "BTN_LEFT release"
+          }
+        ]
+      },
+      "note": "nothing, i had closed i believe projecteur, it had the mouse symbol on it, it is the top button."
+    },
+    {
+      "button": "left arrow",
+      "gestures": {
+        "tap": [
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458832"
+          },
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFT press"
+          },
+          {
+            "ms": 40,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458832"
+          },
+          {
+            "ms": 40,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFT release"
+          }
+        ],
+        "long": [
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458979"
+          },
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTMETA press"
+          },
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458792"
+          },
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "KEY_ENTER press"
+          },
+          {
+            "ms": 10,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458979"
+          },
+          {
+            "ms": 10,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTMETA release"
+          },
+          {
+            "ms": 10,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458792"
+          },
+          {
+            "ms": 10,
+            "dev": "/dev/input/event19",
+            "event": "KEY_ENTER release"
+          },
+          {
+            "ms": 40,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458978"
+          },
+          {
+            "ms": 40,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTALT press"
+          },
+          {
+            "ms": 40,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458979"
+          },
+          {
+            "ms": 40,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTMETA press"
+          },
+          {
+            "ms": 40,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458771"
+          },
+          {
+            "ms": 40,
+            "dev": "/dev/input/event19",
+            "event": "KEY_P press"
+          },
+          {
+            "ms": 50,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458978"
+          },
+          {
+            "ms": 50,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTALT release"
+          },
+          {
+            "ms": 50,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458979"
+          },
+          {
+            "ms": 50,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTMETA release"
+          },
+          {
+            "ms": 50,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458771"
+          },
+          {
+            "ms": 50,
+            "dev": "/dev/input/event19",
+            "event": "KEY_P release"
+          },
+          {
+            "ms": 80,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458977"
+          },
+          {
+            "ms": 80,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTSHIFT press"
+          },
+          {
+            "ms": 80,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458814"
+          },
+          {
+            "ms": 80,
+            "dev": "/dev/input/event19",
+            "event": "KEY_F5 press"
+          },
+          {
+            "ms": 90,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458977"
+          },
+          {
+            "ms": 90,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTSHIFT release"
+          },
+          {
+            "ms": 90,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458814"
+          },
+          {
+            "ms": 90,
+            "dev": "/dev/input/event19",
+            "event": "KEY_F5 release"
+          }
+        ],
+        "double": [
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458832"
+          },
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFT press"
+          },
+          {
+            "ms": 40,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458832"
+          },
+          {
+            "ms": 40,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFT release"
+          },
+          {
+            "ms": 230,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458832"
+          },
+          {
+            "ms": 230,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFT press"
+          },
+          {
+            "ms": 270,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458832"
+          },
+          {
+            "ms": 270,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFT release"
+          }
+        ]
+      },
+      "note": "did nto do a thing because projecteur is closed, normally goes back slides."
+    },
+    {
+      "button": "right arrow",
+      "gestures": {
+        "tap": [
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458831"
+          },
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "KEY_RIGHT press"
+          },
+          {
+            "ms": 40,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458831"
+          },
+          {
+            "ms": 40,
+            "dev": "/dev/input/event19",
+            "event": "KEY_RIGHT release"
+          }
+        ],
+        "long": [
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458757"
+          },
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "KEY_B press"
+          },
+          {
+            "ms": 50,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458757"
+          },
+          {
+            "ms": 50,
+            "dev": "/dev/input/event19",
+            "event": "KEY_B release"
+          }
+        ],
+        "double": [
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458831"
+          },
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "KEY_RIGHT press"
+          },
+          {
+            "ms": 30,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458831"
+          },
+          {
+            "ms": 30,
+            "dev": "/dev/input/event19",
+            "event": "KEY_RIGHT release"
+          },
+          {
+            "ms": 170,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458831"
+          },
+          {
+            "ms": 170,
+            "dev": "/dev/input/event19",
+            "event": "KEY_RIGHT press"
+          },
+          {
+            "ms": 210,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458831"
+          },
+          {
+            "ms": 210,
+            "dev": "/dev/input/event19",
+            "event": "KEY_RIGHT release"
+          }
+        ]
+      },
+      "note": "usually advances the slides, but i have no projecteur turned on"
+    },
+    {
+      "button": "laser/pointer",
+      "gestures": {
+        "tap": [],
+        "long": [
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL press"
+          },
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458767"
+          },
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "KEY_L press"
+          },
+          {
+            "ms": 20,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 20,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL release"
+          },
+          {
+            "ms": 20,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458767"
+          },
+          {
+            "ms": 20,
+            "dev": "/dev/input/event19",
+            "event": "KEY_L release"
+          },
+          {
+            "ms": 119,
+            "dev": "/dev/input/event18",
+            "event": "REL_X motion: 115 events, total 165"
+          },
+          {
+            "ms": 210,
+            "dev": "/dev/input/event18",
+            "event": "REL_Y motion: 93 events, total -13"
+          },
+          {
+            "ms": 2260,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 2260,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL press"
+          },
+          {
+            "ms": 2260,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458756"
+          },
+          {
+            "ms": 2260,
+            "dev": "/dev/input/event19",
+            "event": "KEY_A press"
+          },
+          {
+            "ms": 2280,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 2280,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL release"
+          },
+          {
+            "ms": 2280,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458756"
+          },
+          {
+            "ms": 2280,
+            "dev": "/dev/input/event19",
+            "event": "KEY_A release"
+          }
+        ],
+        "double": []
+      },
+      "note": "it suddenly turned on the green laser (real, not virtual) had no projectour running."
+    },
+    {
+      "button": "right side up",
+      "gestures": {
+        "tap": [
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL press"
+          },
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458771"
+          },
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "KEY_P press"
+          },
+          {
+            "ms": 20,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 20,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL release"
+          },
+          {
+            "ms": 20,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458771"
+          },
+          {
+            "ms": 20,
+            "dev": "/dev/input/event19",
+            "event": "KEY_P release"
+          },
+          {
+            "ms": 21,
+            "dev": "/dev/input/event18",
+            "event": "MSC_SCAN 589825"
+          },
+          {
+            "ms": 21,
+            "dev": "/dev/input/event18",
+            "event": "BTN_LEFT press"
+          },
+          {
+            "ms": 100,
+            "dev": "/dev/input/event18",
+            "event": "REL_X motion: 2668 events, total -526"
+          },
+          {
+            "ms": 100,
+            "dev": "/dev/input/event18",
+            "event": "REL_Y motion: 3266 events, total -4340"
+          },
+          {
+            "ms": 150,
+            "dev": "/dev/input/event18",
+            "event": "MSC_SCAN 589825"
+          },
+          {
+            "ms": 150,
+            "dev": "/dev/input/event18",
+            "event": "BTN_LEFT release"
+          },
+          {
+            "ms": 190,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 190,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL press"
+          },
+          {
+            "ms": 190,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458756"
+          },
+          {
+            "ms": 190,
+            "dev": "/dev/input/event19",
+            "event": "KEY_A press"
+          },
+          {
+            "ms": 210,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 210,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL release"
+          },
+          {
+            "ms": 210,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458756"
+          },
+          {
+            "ms": 210,
+            "dev": "/dev/input/event19",
+            "event": "KEY_A release"
+          },
+          {
+            "ms": 10130,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 10130,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL press"
+          },
+          {
+            "ms": 10130,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458771"
+          },
+          {
+            "ms": 10130,
+            "dev": "/dev/input/event19",
+            "event": "KEY_P press"
+          },
+          {
+            "ms": 10150,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 10150,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL release"
+          },
+          {
+            "ms": 10150,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458771"
+          },
+          {
+            "ms": 10150,
+            "dev": "/dev/input/event19",
+            "event": "KEY_P release"
+          },
+          {
+            "ms": 10160,
+            "dev": "/dev/input/event18",
+            "event": "MSC_SCAN 589825"
+          },
+          {
+            "ms": 10160,
+            "dev": "/dev/input/event18",
+            "event": "BTN_LEFT press"
+          },
+          {
+            "ms": 10320,
+            "dev": "/dev/input/event18",
+            "event": "MSC_SCAN 589825"
+          },
+          {
+            "ms": 10320,
+            "dev": "/dev/input/event18",
+            "event": "BTN_LEFT release"
+          },
+          {
+            "ms": 10360,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 10360,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL press"
+          },
+          {
+            "ms": 10360,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458756"
+          },
+          {
+            "ms": 10360,
+            "dev": "/dev/input/event19",
+            "event": "KEY_A press"
+          },
+          {
+            "ms": 10380,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 10380,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL release"
+          },
+          {
+            "ms": 10380,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458756"
+          },
+          {
+            "ms": 10380,
+            "dev": "/dev/input/event19",
+            "event": "KEY_A release"
+          },
+          {
+            "ms": 42951,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 42951,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL press"
+          },
+          {
+            "ms": 42951,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458771"
+          },
+          {
+            "ms": 42951,
+            "dev": "/dev/input/event19",
+            "event": "KEY_P press"
+          },
+          {
+            "ms": 42971,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 42971,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL release"
+          },
+          {
+            "ms": 42971,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458771"
+          },
+          {
+            "ms": 42971,
+            "dev": "/dev/input/event19",
+            "event": "KEY_P release"
+          },
+          {
+            "ms": 42980,
+            "dev": "/dev/input/event18",
+            "event": "MSC_SCAN 589825"
+          },
+          {
+            "ms": 42980,
+            "dev": "/dev/input/event18",
+            "event": "BTN_LEFT press"
+          },
+          {
+            "ms": 43311,
+            "dev": "/dev/input/event18",
+            "event": "MSC_SCAN 589825"
+          },
+          {
+            "ms": 43311,
+            "dev": "/dev/input/event18",
+            "event": "BTN_LEFT release"
+          },
+          {
+            "ms": 43331,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 43331,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL press"
+          },
+          {
+            "ms": 43331,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458756"
+          },
+          {
+            "ms": 43331,
+            "dev": "/dev/input/event19",
+            "event": "KEY_A press"
+          },
+          {
+            "ms": 43351,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 43351,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL release"
+          },
+          {
+            "ms": 43351,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458756"
+          },
+          {
+            "ms": 43351,
+            "dev": "/dev/input/event19",
+            "event": "KEY_A release"
+          },
+          {
+            "ms": 57561,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 57561,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL press"
+          },
+          {
+            "ms": 57561,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458771"
+          },
+          {
+            "ms": 57561,
+            "dev": "/dev/input/event19",
+            "event": "KEY_P press"
+          },
+          {
+            "ms": 57581,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 57581,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL release"
+          },
+          {
+            "ms": 57581,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458771"
+          },
+          {
+            "ms": 57581,
+            "dev": "/dev/input/event19",
+            "event": "KEY_P release"
+          },
+          {
+            "ms": 57591,
+            "dev": "/dev/input/event18",
+            "event": "MSC_SCAN 589825"
+          },
+          {
+            "ms": 57591,
+            "dev": "/dev/input/event18",
+            "event": "BTN_LEFT press"
+          },
+          {
+            "ms": 57891,
+            "dev": "/dev/input/event18",
+            "event": "MSC_SCAN 589825"
+          },
+          {
+            "ms": 57891,
+            "dev": "/dev/input/event18",
+            "event": "BTN_LEFT release"
+          },
+          {
+            "ms": 57921,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 57921,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL press"
+          },
+          {
+            "ms": 57921,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458756"
+          },
+          {
+            "ms": 57921,
+            "dev": "/dev/input/event19",
+            "event": "KEY_A press"
+          },
+          {
+            "ms": 57941,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 57941,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL release"
+          },
+          {
+            "ms": 57941,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458756"
+          },
+          {
+            "ms": 57941,
+            "dev": "/dev/input/event19",
+            "event": "KEY_A release"
+          }
+        ],
+        "long": [
+          {
+            "ms": 0,
+            "dev": "/dev/input/event18",
+            "event": "REL_X motion: 364 events, total 219"
+          },
+          {
+            "ms": 10,
+            "dev": "/dev/input/event18",
+            "event": "REL_Y motion: 363 events, total 76"
+          },
+          {
+            "ms": 850,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 850,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL press"
+          },
+          {
+            "ms": 850,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458771"
+          },
+          {
+            "ms": 850,
+            "dev": "/dev/input/event19",
+            "event": "KEY_P press"
+          },
+          {
+            "ms": 870,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 870,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL release"
+          },
+          {
+            "ms": 870,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458771"
+          },
+          {
+            "ms": 870,
+            "dev": "/dev/input/event19",
+            "event": "KEY_P release"
+          },
+          {
+            "ms": 880,
+            "dev": "/dev/input/event18",
+            "event": "MSC_SCAN 589825"
+          },
+          {
+            "ms": 880,
+            "dev": "/dev/input/event18",
+            "event": "BTN_LEFT press"
+          },
+          {
+            "ms": 3130,
+            "dev": "/dev/input/event18",
+            "event": "MSC_SCAN 589825"
+          },
+          {
+            "ms": 3130,
+            "dev": "/dev/input/event18",
+            "event": "BTN_LEFT release"
+          },
+          {
+            "ms": 3160,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 3160,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL press"
+          },
+          {
+            "ms": 3160,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458756"
+          },
+          {
+            "ms": 3160,
+            "dev": "/dev/input/event19",
+            "event": "KEY_A press"
+          },
+          {
+            "ms": 3180,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 3180,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL release"
+          },
+          {
+            "ms": 3180,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458756"
+          },
+          {
+            "ms": 3180,
+            "dev": "/dev/input/event19",
+            "event": "KEY_A release"
+          }
+        ],
+        "double": [
+          {
+            "ms": 0,
+            "dev": "/dev/input/event18",
+            "event": "REL_X motion: 188 events, total 283"
+          },
+          {
+            "ms": 20,
+            "dev": "/dev/input/event18",
+            "event": "REL_Y motion: 179 events, total 87"
+          },
+          {
+            "ms": 800,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 800,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL press"
+          },
+          {
+            "ms": 800,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458771"
+          },
+          {
+            "ms": 800,
+            "dev": "/dev/input/event19",
+            "event": "KEY_P press"
+          },
+          {
+            "ms": 820,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 820,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL release"
+          },
+          {
+            "ms": 820,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458771"
+          },
+          {
+            "ms": 820,
+            "dev": "/dev/input/event19",
+            "event": "KEY_P release"
+          },
+          {
+            "ms": 830,
+            "dev": "/dev/input/event18",
+            "event": "MSC_SCAN 589825"
+          },
+          {
+            "ms": 830,
+            "dev": "/dev/input/event18",
+            "event": "BTN_LEFT press"
+          },
+          {
+            "ms": 950,
+            "dev": "/dev/input/event18",
+            "event": "MSC_SCAN 589825"
+          },
+          {
+            "ms": 950,
+            "dev": "/dev/input/event18",
+            "event": "BTN_LEFT release"
+          },
+          {
+            "ms": 990,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 990,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL press"
+          },
+          {
+            "ms": 990,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458756"
+          },
+          {
+            "ms": 990,
+            "dev": "/dev/input/event19",
+            "event": "KEY_A press"
+          },
+          {
+            "ms": 1010,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 1010,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL release"
+          },
+          {
+            "ms": 1010,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458756"
+          },
+          {
+            "ms": 1010,
+            "dev": "/dev/input/event19",
+            "event": "KEY_A release"
+          },
+          {
+            "ms": 1110,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 1110,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL press"
+          },
+          {
+            "ms": 1110,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458771"
+          },
+          {
+            "ms": 1110,
+            "dev": "/dev/input/event19",
+            "event": "KEY_P press"
+          },
+          {
+            "ms": 1130,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 1130,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL release"
+          },
+          {
+            "ms": 1130,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458771"
+          },
+          {
+            "ms": 1130,
+            "dev": "/dev/input/event19",
+            "event": "KEY_P release"
+          },
+          {
+            "ms": 1140,
+            "dev": "/dev/input/event18",
+            "event": "MSC_SCAN 589825"
+          },
+          {
+            "ms": 1140,
+            "dev": "/dev/input/event18",
+            "event": "BTN_LEFT press"
+          },
+          {
+            "ms": 1260,
+            "dev": "/dev/input/event18",
+            "event": "MSC_SCAN 589825"
+          },
+          {
+            "ms": 1260,
+            "dev": "/dev/input/event18",
+            "event": "BTN_LEFT release"
+          },
+          {
+            "ms": 1300,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 1300,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL press"
+          },
+          {
+            "ms": 1300,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458756"
+          },
+          {
+            "ms": 1300,
+            "dev": "/dev/input/event19",
+            "event": "KEY_A press"
+          },
+          {
+            "ms": 1320,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458976"
+          },
+          {
+            "ms": 1320,
+            "dev": "/dev/input/event19",
+            "event": "KEY_LEFTCTRL release"
+          },
+          {
+            "ms": 1320,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458756"
+          },
+          {
+            "ms": 1320,
+            "dev": "/dev/input/event19",
+            "event": "KEY_A release"
+          }
+        ]
+      }
+    },
+    {
+      "button": "right side down",
+      "gestures": {
+        "tap": [
+          {
+            "ms": 0,
+            "dev": "/dev/input/event18",
+            "event": "REL_X motion: 140 events, total 90"
+          },
+          {
+            "ms": 30,
+            "dev": "/dev/input/event18",
+            "event": "REL_Y motion: 128 events, total -52"
+          },
+          {
+            "ms": 1620,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458760"
+          },
+          {
+            "ms": 1620,
+            "dev": "/dev/input/event19",
+            "event": "KEY_E press"
+          },
+          {
+            "ms": 1630,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458760"
+          },
+          {
+            "ms": 1630,
+            "dev": "/dev/input/event19",
+            "event": "KEY_E release"
+          }
+        ],
+        "long": [],
+        "double": [
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458760"
+          },
+          {
+            "ms": 0,
+            "dev": "/dev/input/event19",
+            "event": "KEY_E press"
+          },
+          {
+            "ms": 9,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458760"
+          },
+          {
+            "ms": 9,
+            "dev": "/dev/input/event19",
+            "event": "KEY_E release"
+          },
+          {
+            "ms": 279,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458760"
+          },
+          {
+            "ms": 279,
+            "dev": "/dev/input/event19",
+            "event": "KEY_E press"
+          },
+          {
+            "ms": 289,
+            "dev": "/dev/input/event19",
+            "event": "MSC_SCAN 458760"
+          },
+          {
+            "ms": 289,
+            "dev": "/dev/input/event19",
+            "event": "KEY_E release"
+          }
+        ]
+      },
+      "note": "no projecteur running so it did nothing"
+    }
+  ]
+}
