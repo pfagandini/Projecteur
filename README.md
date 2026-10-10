@@ -65,31 +65,51 @@ with native KDE controls.
 
 ## Install
 
-Stable releases provide source, Arch Linux, Fedora, openSUSE Tumbleweed,
-Debian testing, and Ubuntu packages on the
-[GitHub Releases page](https://github.com/gbin/Projecteur/releases). The install
-step is important: KWin grants zoom access using Projecteur's installed desktop
-metadata, and the presenter needs the installed udev rules.
+The packages on the upstream
+[GitHub Releases page](https://github.com/gbin/Projecteur/releases) do not
+include this fork's Norwii changes, so build and install from this repository
+as described below. The install step is important: KWin grants zoom access using
+Projecteur's installed desktop metadata, and the presenter needs the installed
+udev rules.
 
-### Arch Linux and Arch-based distributions
+### Arch, Fedora, Debian, Ubuntu and their derivatives
 
 Install [`just`](https://github.com/casey/just), then use the included packaging
-workflow. It installs missing build dependencies, creates a native package, and
-installs it with `pacman`.
+workflow. It detects the distribution, installs missing build dependencies,
+builds a native package (`.pkg.tar.zst`, `.rpm` or `.deb`) and installs it with
+`pacman`, `dnf` or `apt`, so it can later be upgraded or removed like any other
+package.
 
 ```sh
-sudo pacman -S --needed just
-git clone https://github.com/gbin/Projecteur.git
+sudo pacman -S --needed just   # Arch
+sudo dnf install just          # Fedora
+sudo apt install just          # Debian, Ubuntu
+
+git clone https://github.com/pfagandini/Projecteur.git
 cd Projecteur
 just install
 ```
 
+Projecteur needs **Plasma 6.7** and **Qt 6.10** or newer, for example Fedora 44
+or Ubuntu 26.10. Older releases such as Debian 13 or Ubuntu 26.04 ship an older
+Plasma; `just install` stops with a clear message there. To update later,
+`git pull` and run `just install` again.
+
+Other useful commands:
+
+- `just package` builds the package into `build/packages/` without installing it.
+- `just deb` builds a `.deb` into `build/packages/`. On Debian or Ubuntu it builds
+  natively; on any other distribution it builds inside a podman or docker
+  container (default image `ubuntu:devel`, pick another with
+  `just deb image=debian:testing`). The `.deb` targets the release of that image.
+
 ### Other distributions
 
-Install the [build dependencies](./CONTRIBUTING.md#requirements), then:
+Install the [build dependencies](./CONTRIBUTING.md#requirements), then either
+run `just install-local` or:
 
 ```sh
-git clone https://github.com/gbin/Projecteur.git
+git clone https://github.com/pfagandini/Projecteur.git
 cd Projecteur
 cmake -S . -B build \
   -DCMAKE_BUILD_TYPE=Release \

@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.20)
 
 # Try to get the Linux distribution and version as a string (host system)
 # When cross compiling this function won't work to get the target distribution.
+# An optional third argument receives the ID_LIKE list (parent distributions,
+# e.g. "ubuntu;debian" on KDE neon), so derivatives can fall back to them.
 function(get_linux_distribution VAR_DIST_NAME VAR_DIST_VERSION)
   # Set fallback defaults
   set(DIST_NAME "linux")
@@ -50,6 +52,19 @@ function(get_linux_distribution VAR_DIST_NAME VAR_DIST_VERSION)
       break()
     endif()
   endforeach()
+
+  set(DIST_LIKE "")
+  foreach(line IN LISTS rel_info_all)
+    if("${line}" MATCHES "^ID_LIKE=[\"]?([^\"]*)")
+      string(TOLOWER "${CMAKE_MATCH_1}" DIST_LIKE)
+      string(STRIP "${DIST_LIKE}" DIST_LIKE)
+      string(REGEX REPLACE "[ \t]+" ";" DIST_LIKE "${DIST_LIKE}")
+      break()
+    endif()
+  endforeach()
+  if(ARGC GREATER 2)
+    set(${ARGV2} "${DIST_LIKE}" PARENT_SCOPE)
+  endif()
 
   if(NOT DIST_NAME_SET)
     message(STATUS "Could not get linux distribution id, defaulting to 'linux'")
